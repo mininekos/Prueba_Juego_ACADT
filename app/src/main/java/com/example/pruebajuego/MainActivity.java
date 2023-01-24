@@ -22,5 +22,6 @@ public class MainActivity extends AppCompatActivity {
             //setContentView(new Vista(this));
         setContentView(new MoverFiguras(this));
 
+
     }
 }
