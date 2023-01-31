@@ -2,14 +2,15 @@ package com.example.pruebajuego;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 
 public class HiloDibujo extends Thread{
 
-    private MoverFiguras vista;
+    private SurfaceView vista;
     private SurfaceHolder sh;
     private boolean run;
 
-    public HiloDibujo(MoverFiguras vista){
+    public HiloDibujo(SurfaceView vista){
         this.sh=vista.getHolder();
         this.vista=vista;
         run=false;

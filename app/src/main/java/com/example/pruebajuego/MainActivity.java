@@ -20,8 +20,10 @@ public class MainActivity extends AppCompatActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //Modo epilepsia
             //setContentView(new Vista(this));
-        setContentView(new MoverFiguras(this));
-
+        //Sin sprites
+            //setContentView(new MoverFiguras(this));
+        //Con Sprites
+            setContentView(new GameView(this));
 
     }
 }
