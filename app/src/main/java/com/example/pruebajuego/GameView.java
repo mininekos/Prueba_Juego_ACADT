@@ -13,22 +13,29 @@ import androidx.annotation.NonNull;
 import com.example.pruebajuego.Hilos.GameLoopThread;
 import com.example.pruebajuego.POJOSSprite.Sprite;
 
+import java.util.ArrayList;
+
 public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 
     private Bitmap bmp;
     private Sprite sprite;
+    private ArrayList<Sprite> sprites;
     private GameLoopThread gameLoopThread;
     public GameView(Context context) {
         super(context);
         getHolder().addCallback(this);
         //HAY QUE PONERLO POR COJONES
         setBackgroundColor(Color.WHITE);
+        sprites=new ArrayList<Sprite>();
     }
 
     @Override
     protected void onDraw(Canvas canvas){
         canvas.drawColor(Color.WHITE);
-        sprite.onDraw(canvas);
+        for (Sprite sprite:sprites) {
+            sprite.onDraw(canvas);
+        }
+
     }
 
     @Override
@@ -38,7 +45,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
         gameLoopThread.start();
         bmp= BitmapFactory.decodeResource(getResources(),R.drawable.sprite_angel);
         bmp=bmp.createScaledBitmap(bmp,500,656,true);
-        sprite= new Sprite(this,this.bmp);
+
+        sprites.add(new Sprite(this,this.bmp));
+        sprites.add(new Sprite(this,this.bmp,0,150));
+        sprites.add(new Sprite(this,this.bmp,0,300));
+        sprites.add(new Sprite(this,this.bmp,0,450));
+        sprites.add(new Sprite(this,this.bmp,0,600));
     }
 
     @Override
