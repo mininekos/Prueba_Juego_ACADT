@@ -12,6 +12,7 @@ import java.util.Random;
 public class Sprite {
     private static final int BMP_ROWS=4;
     private static final int BMP_COLUMNS=3;
+    private static final int MAX_SPEED=20;
     private int x=0;
     private int y=0;
     private int xSpeed;
@@ -31,8 +32,8 @@ public class Sprite {
         this.width=bmp.getWidth()/BMP_COLUMNS;
         this.height=bmp.getHeight()/BMP_ROWS;
         Random rnd=new Random();
-        xSpeed=rnd.nextInt(20)-5;
-        ySpeed=rnd.nextInt(20)-5;
+        xSpeed=rnd.nextInt(MAX_SPEED*2)-MAX_SPEED;
+        ySpeed=rnd.nextInt(MAX_SPEED*2)-MAX_SPEED;
     }
 
     public Sprite(GameView gameView, Bitmap bmp,int x, int y){
@@ -75,6 +76,10 @@ public class Sprite {
         Rect src=new Rect(srcX,srcY,srcX+width,srcY+height);
         Rect dst=new Rect(x,y,x+width,y+height);
         canvas.drawBitmap(bmp,src,dst,null);
+    }
+
+    public boolean isCollition(float x2, float y2){
+        return x2>x && x2<x+width && y2>y && y2<y+height;
     }
 
 }
